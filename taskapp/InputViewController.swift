@@ -9,27 +9,73 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-class InputViewController: UIViewController {
-
+class InputViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
-
+    @IBOutlet weak var pickerView: UIPickerView!
+    
     
     let realm = try! Realm()
     var task: Task!
+    var category: Category!
+    
+    //プロパティを設定
+    
+    
+    var categories = ["宿題","仕事","遊び"] {
+        didSet {
+            print("新しい配列\(categories)")
+        }
+    }
+
+    
+    //pickerViewの列の数
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    //pickerViewの行の数、要素の数
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categories.count
+    }
+    
+    // pickerViewに表示する配列
+    func pickerView(_ pickerView: UIPickerView,
+                    titleForRow row: Int,
+                    forComponent component: Int) -> String? {
+        
+        return categories[row]
+    }
+    
+    // pickerViewのRowが選択された時の挙動
+    func pickerView(_ pickerView: UIPickerView,
+                    didSelectRow row: Int,
+                    inComponent component: Int) {
+    }
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
 
+        pickerView.reloadAllComponents()
         //背景をタップしたらdismissKeyboardメソッドを呼ぶように設定する
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
         
         titleTextField.text = task.title
         contentsTextView.text = task.contents
-        categoryField.text = task.category
         datePicker.date = task.date
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        pickerView.reloadAllComponents()
     }
     
     @objc func dismissKeyboard() {
@@ -37,11 +83,11 @@ class InputViewController: UIViewController {
         view.endEditing(true)
     }
     
+    //遷移先に戻る際にタスクの内容をデータベースに保存する
     override func viewWillDisappear(_ animated: Bool) {
         try! realm.write {
             self.task.title = self.titleTextField.text!
-            self.task.contents = self.contentsTextView.text
-            self.task.category = self.categoryField.text!
+            self.task.contents = self.contentsTextView.text!
             self.task.date = self.datePicker.date
             self.realm.add(self.task, update: .modified)
         }

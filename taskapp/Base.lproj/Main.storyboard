@@ -19,7 +19,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KyW-8u-aC2">
                                 <rect key="frame" x="0.0" y="88" width="390" height="722"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="カテゴリーを入力" id="vHO-ph-Csy">
+                                <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="タイトルを検索" id="vHO-ph-Csy">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <constraints>
@@ -172,6 +172,7 @@
                     <connections>
                         <outlet property="contentsTextView" destination="6GO-Ab-GOF" id="aEt-C0-puN"/>
                         <outlet property="datePicker" destination="tkP-b9-0Ci" id="YTb-bo-uqI"/>
+                        <outlet property="pickerView" destination="9cN-8K-9k7" id="Y39-KM-93Y"/>
                         <outlet property="titleTextField" destination="KJD-l1-MC4" id="xxA-0h-brL"/>
                     </connections>
                 </viewController>
@@ -179,10 +180,10 @@
             </objects>
             <point key="canvasLocation" x="1697" y="88"/>
         </scene>
-        <!--View Controller-->
+        <!--Category View Controller-->
         <scene sceneID="dwj-V9-lMK">
             <objects>
-                <viewController id="s2w-VJ-Xtf" sceneMemberID="viewController">
+                <viewController id="s2w-VJ-Xtf" customClass="CategoryViewController" customModule="taskapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="njB-kC-O4n">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,6 +212,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7VW-fU-yhr"/>
+                    <connections>
+                        <outlet property="CategoryTextField" destination="jOa-Nj-XaQ" id="Atv-b0-Ypn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlm-MU-RK9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

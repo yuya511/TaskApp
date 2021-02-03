@@ -16,6 +16,7 @@
 		863B0A6825BCA1E6007B4213 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863B0A6725BCA1E6007B4213 /* InputViewController.swift */; };
 		86B0C54525BFDF2B00B6D47C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0C54425BFDF2B00B6D47C /* Task.swift */; };
 		86B0C56925C8725500B6D47C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0C56825C8725500B6D47C /* Category.swift */; };
+		86B0C56C25C879D500B6D47C /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0C56B25C879D500B6D47C /* CategoryViewController.swift */; };
 		9D7E93D4AF1E77E292C54193 /* Pods_taskapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E96AD75333641DE4B8DE1374 /* Pods_taskapp.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		863B0A6725BCA1E6007B4213 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		86B0C54425BFDF2B00B6D47C /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		86B0C56825C8725500B6D47C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		86B0C56B25C879D500B6D47C /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		C9AF700CD21BCCF5BF4948C3 /* Pods-taskapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taskapp.release.xcconfig"; path = "Target Support Files/Pods-taskapp/Pods-taskapp.release.xcconfig"; sourceTree = "<group>"; };
 		E96AD75333641DE4B8DE1374 /* Pods_taskapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_taskapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 				86B0C56825C8725500B6D47C /* Category.swift */,
 				863B0A5325BADE1D007B4213 /* SceneDelegate.swift */,
 				863B0A5525BADE1D007B4213 /* ViewController.swift */,
+				86B0C56B25C879D500B6D47C /* CategoryViewController.swift */,
 				863B0A6725BCA1E6007B4213 /* InputViewController.swift */,
 				863B0A5725BADE1D007B4213 /* Main.storyboard */,
 				863B0A5A25BADE1E007B4213 /* Assets.xcassets */,
@@ -216,6 +219,7 @@
 			files = (
 				863B0A5625BADE1D007B4213 /* ViewController.swift in Sources */,
 				863B0A5225BADE1D007B4213 /* AppDelegate.swift in Sources */,
+				86B0C56C25C879D500B6D47C /* CategoryViewController.swift in Sources */,
 				86B0C54525BFDF2B00B6D47C /* Task.swift in Sources */,
 				863B0A5425BADE1D007B4213 /* SceneDelegate.swift in Sources */,
 				863B0A6825BCA1E6007B4213 /* InputViewController.swift in Sources */,

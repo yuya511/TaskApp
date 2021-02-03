@@ -23,7 +23,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //日付の近い順でソート(並び替え)：昇順
     //以降内容をアップデートするとリスト内は自動的に更新される。
     var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date",ascending: true)
-    
+    var Categories = try! Realm().objects(Category.self).sorted(byKeyPath: "category",ascending: true)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,7 +130,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             } else {
                 taskArray = realm
                     .objects(Task.self)
-                    .filter("category BEGINSWITH %@", searchText)
+                    .filter("title BEGINSWITH %@", searchText)
             }
 
             tableView.reloadData()
