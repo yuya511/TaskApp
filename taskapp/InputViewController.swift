@@ -20,7 +20,7 @@ class InputViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewD
     
     let realm = try! Realm()
     var task: Task!
-    var category: Category!
+    
     
     //プロパティを設定
     
@@ -30,6 +30,8 @@ class InputViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewD
             print("新しい配列\(categories)")
         }
     }
+    
+    var selected = ""
 
     
     //pickerViewの列の数
@@ -54,6 +56,7 @@ class InputViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView,
                     didSelectRow row: Int,
                     inComponent component: Int) {
+        selected = categories[row]
     }
     
    
@@ -61,22 +64,22 @@ class InputViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //ピッカービューのデリゲートの設定
         pickerView.delegate = self
         pickerView.dataSource = self
 
-        pickerView.reloadAllComponents()
+        
         //背景をタップしたらdismissKeyboardメソッドを呼ぶように設定する
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
         
         titleTextField.text = task.title
         contentsTextView.text = task.contents
+    
         datePicker.date = task.date
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        pickerView.reloadAllComponents()
-    }
+   
     
     @objc func dismissKeyboard() {
         //キーボードを閉じる
@@ -89,7 +92,9 @@ class InputViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewD
             self.task.title = self.titleTextField.text!
             self.task.contents = self.contentsTextView.text!
             self.task.date = self.datePicker.date
+            self.task.category = selected
             self.realm.add(self.task, update: .modified)
+            
         }
         
         setNotification(task: task)
