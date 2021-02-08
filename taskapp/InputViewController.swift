@@ -31,6 +31,7 @@ class InputViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewD
         }
     }
     
+    
     var selected = ""
 
     
@@ -68,15 +69,30 @@ class InputViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewD
         pickerView.delegate = self
         pickerView.dataSource = self
 
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
         //背景をタップしたらdismissKeyboardメソッドを呼ぶように設定する
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
         
+        
+        pickerView.reloadAllComponents()
+        let firstIndex:Int? = categories.firstIndex(of: task.category)
+        print("選択された配列のインデックス:\(firstIndex)")
+       
+        if firstIndex != nil {
+            pickerView.selectRow(firstIndex!, inComponent:0, animated: true)
+        } else {
+            pickerView.selectRow(0, inComponent: 0, animated: true)
+        }
+        
         titleTextField.text = task.title
         contentsTextView.text = task.contents
-    
         datePicker.date = task.date
+        
     }
     
    
